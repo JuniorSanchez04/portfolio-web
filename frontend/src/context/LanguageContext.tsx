@@ -1,19 +1,26 @@
-'use client';
+"use client";
 
-import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
-import { es } from '@/messages/es';
-import { en } from '@/messages/en';
-import type { Lang, Bilingual } from '@/types';
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  type ReactNode,
+} from "react";
+import { es } from "@/messages/es";
+import { en } from "@/messages/en";
+import type { Lang, Bilingual } from "@/types";
 
 const messages = { es, en };
 
 // Dot-notation accessor: t('nav.about') → messages[lang].nav.about
 function resolve(obj: Record<string, unknown>, path: string): string {
-  const result = path.split('.').reduce<unknown>((acc, key) => {
-    if (acc && typeof acc === 'object') return (acc as Record<string, unknown>)[key];
+  const result = path.split(".").reduce<unknown>((acc, key) => {
+    if (acc && typeof acc === "object")
+      return (acc as Record<string, unknown>)[key];
     return undefined;
   }, obj);
-  return typeof result === 'string' ? result : path;
+  return typeof result === "string" ? result : path;
 }
 
 interface LanguageContextType {
@@ -27,18 +34,18 @@ const LanguageContext = createContext<LanguageContextType | null>(null);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   // Start with 'es' — matches server render, avoids hydration mismatch
-  const [lang, setLangState] = useState<Lang>('es');
-
+  const [lang, setLangState] = useState<Lang>("es");
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => {
-    const stored = localStorage.getItem('lang') as Lang | null;
-    if (stored === 'es' || stored === 'en') {
+    const stored = localStorage.getItem("lang") as Lang | null;
+    if (stored === "es" || stored === "en") {
       setLangState(stored);
     }
   }, []);
 
   function setLang(l: Lang) {
     setLangState(l);
-    localStorage.setItem('lang', l);
+    localStorage.setItem("lang", l);
   }
 
   function t(key: string): string {
@@ -61,6 +68,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
 export function useLanguage(): LanguageContextType {
   const ctx = useContext(LanguageContext);
-  if (!ctx) throw new Error('useLanguage must be used inside LanguageProvider');
+  if (!ctx) throw new Error("useLanguage must be used inside LanguageProvider");
   return ctx;
 }
