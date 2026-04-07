@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { personal } from "@/data/portfolio";
@@ -12,10 +13,10 @@ export default function Navbar() {
   const { t } = useLanguage();
 
   const links = [
-    { label: t('nav.about'), href: "/#about" },
-    { label: t('nav.skills'), href: "/#skills" },
-    { label: t('nav.projects'), href: "/#projects" },
-    { label: t('nav.contact'), href: "/#contact" },
+    { label: t("nav.about"), href: "/#about" },
+    { label: t("nav.skills"), href: "/#skills" },
+    { label: t("nav.projects"), href: "/#projects" },
+    { label: t("nav.contact"), href: "/#contact" },
   ];
 
   useEffect(() => {
@@ -32,19 +33,19 @@ export default function Navbar() {
           : ""
       }`}>
       <nav className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="/#hero" className="font-semibold text-white tracking-tight">
+        <Link href="/#hero" className="font-semibold text-white tracking-tight">
           {personal.name}
           <span className="text-indigo-400">.</span>
-        </a>
+        </Link>
 
         <ul className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <li key={l.href}>
-              <a
+              <Link
                 href={l.href}
                 className="text-sm text-neutral-400 hover:text-white transition-colors">
                 {l.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -66,12 +67,12 @@ export default function Navbar() {
           <ul className="flex flex-col gap-4 mb-4">
             {links.map((l) => (
               <li key={l.href}>
-                <a
+                <Link
                   href={l.href}
                   className="text-sm text-neutral-400 hover:text-white transition-colors"
                   onClick={() => setOpen(false)}>
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
