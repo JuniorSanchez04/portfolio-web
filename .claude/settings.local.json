@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm add:*)",
+      "Bash(pnpm create:*)",
+      "Bash(npx tsc:*)",
+      "Bash(pnpm build:*)",
+      "Bash(NODE_OPTIONS=--stack-trace-limit=50 pnpm build)",
+      "Bash(node -e \"const p = require\\('@tailwindcss/postcss'\\); console.log\\(typeof p\\); console.log\\(Object.keys\\(p\\)\\);\")",
+      "Bash(node --stack-trace-limit=100 -e ':*)",
+      "Bash(node -e ':*)",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d.get\\('version', 'unknown'\\)\\)\")",
+      "Bash(pnpm tsc:*)",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('peerDependencies', {}\\), indent=2\\)\\)\")",
+      "Bash(env -u NODE_ENV pnpm build)",
+      "Bash(NEXT_TELEMETRY_DISABLED=1 node --stack-trace-limit=100 \"C:/xampp/htdocs/portafolio_web/frontend/node_modules/next/dist/bin/next\" build)",
+      "Bash(cp pedidos.png sistema-web-pedidos/cover.png)",
+      "Bash(cp inventario.png sistema-inventario-ventas/cover.png)",
+      "Bash(cp portafolio.png portafolio-web/cover.png)",
+      "Bash(cp saneamiento.png gestion-junta-saneamiento/cover.png)",
+      "Bash(cp calzados.png sistema-venta-calzados/cover.png)"
+    ]
+  }
+}
